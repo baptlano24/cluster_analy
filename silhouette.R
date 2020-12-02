@@ -12,12 +12,12 @@ silhouette<-function(X,clust,distance){
     group_x <- clus_in[1:(length(clus_in)-1)]
     #coefficient de silhouette par point
     s <- apply(group_x,1,function(x) distance_moyenne_a(x1=x,X=group_x,Y=clus_out,distance=1))
-    print(s)
+    #print(s)
     s_sum <- sum(s)/Ik
     print(s_sum)#coefficient de silhouette par cluster
     }
   
-}S
+}
 
 distance_moyenne_a <- function(x1,X,Y,distance){
   #distance moyenne d'un point dans son cluster
@@ -52,16 +52,14 @@ cluster_test <- c("jaune","jaune","rouge","rouge","noir","noir")
 silhouette(test,cluster_test,"1")
 #print(test)
 
-value <- distance_moyenne_a(c(1,0),test,1)
-value2 <- distance_moyenne_a(c(2,1),test,1)
-value3 <- distance_moyenne_a(c(1,0),test,1)
-value4 <- distance_moyenne_a(c(2,3),test,1)
-print(value)
-print(value2)
-print(value3)
-print(value4)
-value+value2+value3+value4
-#dist(rbind(x,x))
-#dist(rbind(x,y))
+#test <- data.frame(x, y)
+matrix_test <- data.matrix(test)
+#print(test)
+print(matrix_test)
+#cluster_test <- c("jaune","jaune","jaune","rouge","rouge","noir","noir")
+cluster_name <- c(1,1,1,2,2,3,3)
+test_1 <- as.integer(cluster_name)
+library(clusterCrit)  
+#silhouette(test,cluster_test,"1")
+#intCriteria(matrix_test,test_1,c("Silhouette"))
 
-  
